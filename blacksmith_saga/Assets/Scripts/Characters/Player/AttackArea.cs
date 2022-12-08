@@ -1,22 +1,23 @@
-﻿using System.Collections;
+using Assets.Scripts.Interfaces;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwordHitbox : MonoBehaviour
+public class AttackArea : MonoBehaviour
 {
     public float damage = 1f;
     public float knockbackForce = 5000f;
 
-    public Collider2D swordCollider;
+    public Collider2D areaCollider;
 
-    Vector3 faceRight = new Vector3(-0.1f, -0.1f, 0);
-    Vector3 faceLeft = new Vector3(0.1f, -0.1f, 0);
+    Vector3 faceRight = new Vector3(-0.7f, 0.1f, 0);
+    Vector3 faceLeft = new Vector3(0.1f, 0.1f, 0);
 
     private void Start()
     {
-        if (swordCollider == null)
+        if (areaCollider == null)
         {
-            Debug.LogWarning("Sword Collider not set");
+            Debug.LogWarning("Attack Collider not set");
         }
     }
 
@@ -24,7 +25,7 @@ public class SwordHitbox : MonoBehaviour
     {
         IDamageable damageableObject = collider.GetComponent<IDamageable>();
 
-        if(damageableObject != null)
+        if (damageableObject != null)
         {
             Vector3 parentPosition = gameObject.GetComponentInParent<Transform>().position;
 
@@ -42,7 +43,7 @@ public class SwordHitbox : MonoBehaviour
 
     void IsFacingRight(bool isFacingRight)
     {
-        if(isFacingRight)
+        if (isFacingRight)
         {
             gameObject.transform.localPosition = faceRight;
         }

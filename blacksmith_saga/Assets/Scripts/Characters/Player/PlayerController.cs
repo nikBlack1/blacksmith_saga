@@ -17,12 +17,12 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 150f;
     public float maxSpeed = 8f;
     public float idleFriction = 0.9f;
-    public GameObject swordHitbox;
+    public GameObject attackArea;
 
     new Rigidbody2D rigidbody;
     Animator animator;
     SpriteRenderer spriteRenderer;
-    Collider2D swordCollider;
+    Collider2D attackCollider;
     Vector2 movementInput = Vector2.zero;
     public Vector2 lastMotionVector;
 
@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        swordCollider = swordHitbox.GetComponent<Collider2D>();
+        attackCollider = attackArea.GetComponent<Collider2D>();
     }
 
     private void FixedUpdate()
@@ -90,16 +90,16 @@ public class PlayerController : MonoBehaviour
 
     void OnFire()
     {
-        animator.SetTrigger("swordAttack");
+        animator.SetTrigger("attack");
     }
     
 
-    public void SwordAttack()
+    public void Attack()
     {
         LockMovement();
     }
 
-    public void EndSwordAttack()
+    public void EndAttack()
     {
         UnlockMovement();
     }
