@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     SpriteRenderer spriteRenderer;
     Collider2D swordCollider;
     Vector2 movementInput = Vector2.zero;
+    public Vector2 lastMotionVector;
 
     bool canMove = true;
     bool isMoving = false;
@@ -40,6 +41,23 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+
+        isMoving = horizontal != 0 || vertical != 0;
+        animator.SetBool("isMoving", isMoving);
+
+        if (horizontal != 0 || vertical != 0)
+        {
+            lastMotionVector = new Vector2(
+                horizontal,
+                vertical
+            ).normalized;
+            
+            animator.SetFloat("lastHorizontal", horizontal);
+            animator.SetFloat("lastVertical", vertical);
+        }
+        
         if (canMove == true && movementInput != Vector2.zero)
         {
             rigidbody.velocity = Vector2.ClampMagnitude(rigidbody.velocity + (movementInput * moveSpeed * Time.deltaTime), maxSpeed);
