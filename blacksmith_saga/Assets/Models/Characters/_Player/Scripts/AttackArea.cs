@@ -33,6 +33,7 @@ public class AttackArea : MonoBehaviour
             Vector2 knockback = direction * knockbackForce;
 
             //collider.SendMessage("OnHit", damage, knockback);
+            // collider.SendMessage("OnHit", damage);
             damageableObject.OnHit(damage, knockback);
         }
         else
