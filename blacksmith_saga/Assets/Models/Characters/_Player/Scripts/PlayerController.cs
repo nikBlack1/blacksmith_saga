@@ -54,8 +54,8 @@ public class PlayerController : MonoBehaviour
                 vertical
             ).normalized;
             
-            animator.SetFloat("lastHorizontal", horizontal);
-            animator.SetFloat("lastVertical", vertical);
+            //animator.SetFloat("lastHorizontal", horizontal);
+            //animator.SetFloat("lastVertical", vertical);
         }
         
         if (canMove == true && movementInput != Vector2.zero)
