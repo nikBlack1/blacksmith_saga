@@ -29,7 +29,6 @@ public class PlayerController : MonoBehaviour
     bool canMove = true;
     bool isMoving = false;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -53,9 +52,6 @@ public class PlayerController : MonoBehaviour
                 horizontal,
                 vertical
             ).normalized;
-            
-            //animator.SetFloat("lastHorizontal", horizontal);
-            //animator.SetFloat("lastVertical", vertical);
         }
         
         if (canMove == true && movementInput != Vector2.zero)
@@ -77,8 +73,6 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            //rigidbody.velocity = Vector2.Lerp(rigidbody.velocity, Vector2.zero, idleFriction);
-                
             IsMoving = false;
         }
     }

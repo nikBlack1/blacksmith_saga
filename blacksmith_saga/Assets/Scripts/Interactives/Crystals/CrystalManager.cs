@@ -56,7 +56,7 @@ public class CrystalManager : MonoBehaviour
     
     void SpawnCrystals()
     {
-        crystalsCountPerSpawn = 300;
+        crystalsCountPerSpawn = 5;
         while (crystalsCountPerSpawn > 0)
         {
             crystalsCountPerSpawn  -= 1;

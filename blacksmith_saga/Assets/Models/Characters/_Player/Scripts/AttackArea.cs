@@ -6,11 +6,11 @@ using UnityEngine;
 public class AttackArea : MonoBehaviour
 {
     public float damage = 1f;
-    public float knockbackForce = 5000f;
+    public float knockbackForce = 0.001f;
 
     public Collider2D areaCollider;
 
-    Vector3 faceRight = new Vector3(-0.7f, 0.1f, 0);
+    Vector3 faceRight = new Vector3(-0.5f, 0.1f, 0);
     Vector3 faceLeft = new Vector3(0.1f, 0.1f, 0);
 
     private void Start()
@@ -53,10 +53,4 @@ public class AttackArea : MonoBehaviour
             gameObject.transform.localPosition = faceLeft;
         }
     }
-    /*
-    Vector2 CalculateKnockback()
-    {
-        GameObject character = gameObject.getParent;
-    }
-    */
 }
