@@ -7,10 +7,23 @@ using Vector3 = UnityEngine.Vector3;
 
 public class PuckupItem : MonoBehaviour
 {
-    private Transform player;
+    // --------------------------------------
+    // ---- Object variables ----------------
+    // -------------------------------------- 
     [SerializeField] private float speed = 4f;
     [SerializeField] private float pickupDistance = 2.5f;
     [SerializeField] private float despawnTime = 10f;
+    // -------------------------------------- 
+
+        
+        
+    // --------------------------------------
+    // ---- Reference variables -------------
+    // --------------------------------------
+    private Transform player;
+    // -------------------------------------- 
+
+
 
 
     private void Awake()
@@ -35,7 +48,7 @@ public class PuckupItem : MonoBehaviour
         transform.position = UnityEngine.Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
         if (distance < 0.1f)
         {
-            
+            ResourcesManager.instance.blueShardsAmount += 1;
             Destroy(gameObject);
         }
         

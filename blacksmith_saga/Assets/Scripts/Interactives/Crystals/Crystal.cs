@@ -15,6 +15,9 @@ public class Crystal : MonoBehaviour, IDamageable
     [SerializeField] private float spread = 2f;
     [SerializeField] private GameObject drop;
     
+
+
+    
     // --------------------------------------
     
     
@@ -42,6 +45,8 @@ public class Crystal : MonoBehaviour, IDamageable
             {
                 while (dropCount > 0)
                 {
+
+                    
                     dropCount  -= 1;
                     Vector3 pos = transform.position;
                     pos.x += spread * Random.value - spread / 2;
@@ -50,6 +55,9 @@ public class Crystal : MonoBehaviour, IDamageable
                     go.transform.position = pos;
                 }
                 Destroy(gameObject);
+                
+                CrystalManager.Instance.SubstractCrystal();
+
             }
         }
         get
@@ -80,6 +88,7 @@ public class Crystal : MonoBehaviour, IDamageable
     {
         Health -= damage;
     }
+    
 
 
 }

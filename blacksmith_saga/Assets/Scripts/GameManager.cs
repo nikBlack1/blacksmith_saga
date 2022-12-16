@@ -9,11 +9,9 @@ public class GameManager : MonoBehaviour
     
     public static GameManager instance;
     public GameObject player;
-    public int crystalsAmount;
     private void Awake()
     {
         instance = this;
-        crystalsAmount = 0;
     }
     
     
