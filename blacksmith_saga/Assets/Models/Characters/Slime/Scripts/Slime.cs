@@ -60,10 +60,16 @@ public class Slime : MonoBehaviour, IDamageable
         if(aiPath.desiredVelocity.x >= 0.01f)
         {
             transform.localScale = new Vector3(0.32f, 0.32f, 1f);
+            animator.SetBool("isMoving", true);
         }
         else if(aiPath.desiredVelocity.x <= -0.01f)
         {
             transform.localScale = new Vector3(-0.32f, 0.32f, 1f);
+            animator.SetBool("isMoving", true);
+        }
+        else
+        {
+            animator.SetBool("isMoving", false);
         }
     }
 
@@ -76,7 +82,7 @@ public class Slime : MonoBehaviour, IDamageable
     {
         Health -= damage;
 
-        //rigidbody.AddForce(knockback);
+        rigidbody.AddForce(knockback);
     }
 
     public void OnHit(float damage)

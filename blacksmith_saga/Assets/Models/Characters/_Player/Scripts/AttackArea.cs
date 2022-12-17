@@ -6,7 +6,7 @@ using UnityEngine;
 public class AttackArea : MonoBehaviour
 {
     public float damage = 1f;
-    public float knockbackForce = 0.001f;
+    public float knockbackForce = 0.1f;
 
     public Collider2D areaCollider;
 
