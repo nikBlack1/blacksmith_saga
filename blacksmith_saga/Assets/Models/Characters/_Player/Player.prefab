@@ -210,7 +210,6 @@ MonoBehaviour:
   maxSpeed: 8
   idleFriction: 0.9
   attackArea: {fileID: 9015534292953589280}
-  lastMotionVector: {x: 0, y: 0}
 --- !u!50 &9015534293705393917
 Rigidbody2D:
   serializedVersion: 4
@@ -223,7 +222,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 50
   m_LinearDrag: 50
   m_AngularDrag: 0.05
   m_GravityScale: 0

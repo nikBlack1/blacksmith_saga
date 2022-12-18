@@ -57,7 +57,7 @@ public class Slime : MonoBehaviour, IDamageable
 
     void Update()
     {
-        if(aiPath.desiredVelocity.x >= 0.01f)
+        if (aiPath.desiredVelocity.x >= 0.01f)
         {
             transform.localScale = new Vector3(0.32f, 0.32f, 1f);
             animator.SetBool("isMoving", true);
