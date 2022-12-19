@@ -15,11 +15,20 @@ public class ResourcesManager : MonoBehaviour
     
     public int blueChunksAmount;
     public Text blueChunksDisplay;
+    
+    public int moneyAmount;
+    public Text moneyAmountDisplay;
+    
+    public int fameAmount;
+    public Text fameAmountDisplay;
+    
     private void Awake()
     {
         instance = this;
         blueShardsAmount = 0;
         blueChunksAmount = 0;
+        moneyAmount = 0;
+        fameAmount = 0;
     }
 
 
@@ -27,5 +36,7 @@ public class ResourcesManager : MonoBehaviour
     {
         blueShardsDisplay.text = blueShardsAmount.ToString();
         blueChunksDisplay.text = blueChunksAmount.ToString();
+        moneyAmountDisplay.text = moneyAmount.ToString();
+        fameAmountDisplay.text = fameAmount.ToString();
     }
 }
