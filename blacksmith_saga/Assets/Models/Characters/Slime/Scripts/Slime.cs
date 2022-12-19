@@ -2,14 +2,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class Slime : MonoBehaviour, IDamageable
 {
+    bool IsMoving
+    {
+        set
+        {
+            isMoving = value;
+            animator.SetBool("isMoving", isMoving);
+        }
+    }
+
+    public AIPath aiPath;
+
     Animator animator;
 
-    Rigidbody2D rigidbody;
+    new Rigidbody2D rigidbody;
 
     bool isAlive = true;
+    bool isMoving = false;
 
     public float Health
     {
@@ -40,6 +53,24 @@ public class Slime : MonoBehaviour, IDamageable
         animator = GetComponent<Animator>();
         animator.SetBool("isAlive", isAlive);
         rigidbody = GetComponent<Rigidbody2D>();
+    }
+
+    void Update()
+    {
+        if(aiPath.desiredVelocity.x >= 0.01f)
+        {
+            transform.localScale = new Vector3(0.32f, 0.32f, 1f);
+            animator.SetBool("isMoving", true);
+        }
+        else if(aiPath.desiredVelocity.x <= -0.01f)
+        {
+            transform.localScale = new Vector3(-0.32f, 0.32f, 1f);
+            animator.SetBool("isMoving", true);
+        }
+        else
+        {
+            animator.SetBool("isMoving", false);
+        }
     }
 
     public void RemoveEnemy()
