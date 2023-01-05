@@ -1,24 +1,14 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class CrystalManager : MonoBehaviour
+public class CrystalSpawnPoint : MonoBehaviour
 {
-    
     // --------------------------------------
     // ---- Object variables ----------------
     // -------------------------------------- 
     [SerializeField] private int crystalsCountPerSpawn;
     [SerializeField] private float spread = 2f;
     public int restCrystals;
-    public static CrystalManager Instance;
-
-
-    // -------------------------------------- 
-
-    
     
     // --------------------------------------
     // ---- Reference variables -------------
@@ -26,25 +16,14 @@ public class CrystalManager : MonoBehaviour
     [SerializeField] private GameObject crystal;
     // [SerializeField] private int respawnTime = 60;
     // -------------------------------------- 
-
-    private void Awake()
-    {
-        Instance = this;
-    }
-
-
+    
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = new Vector3(0, 0, 0);
-        // restCrystals = crystalsCountPerSpawn;
-
         SpawnCrystals();
     }
 
-    
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (restCrystals <= 0)
         {
@@ -52,10 +31,8 @@ public class CrystalManager : MonoBehaviour
         }
     }
 
-    
     void SpawnCrystals()
     {
-        crystalsCountPerSpawn = 5;
         while (crystalsCountPerSpawn > 0)
         {
             crystalsCountPerSpawn  -= 1;
@@ -64,15 +41,10 @@ public class CrystalManager : MonoBehaviour
             RandomlyPlaceCrystal(go);
         }
     }
-
-    public void SubstractCrystal()
-    {
-        restCrystals -= 1;
-    }
-
+    
     public void RandomlyPlaceCrystal(GameObject go)
     {
-        go.transform.position = new Vector3(0, 0, 0);
+        go.transform.position = transform.position;
 
         Vector3 pos = go.transform.position;
         pos.x += spread * Random.value - spread / 2;
