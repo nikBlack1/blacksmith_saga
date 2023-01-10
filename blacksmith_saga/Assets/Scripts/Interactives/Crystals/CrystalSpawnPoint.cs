@@ -52,4 +52,9 @@ public class CrystalSpawnPoint : MonoBehaviour
         
         go.transform.position = pos;
     }
+    
+    public void SubstractCrystal()
+    {
+        restCrystals -= 1;
+    }
 }
