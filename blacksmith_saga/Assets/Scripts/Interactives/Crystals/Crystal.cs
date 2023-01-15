@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using Assets.Scripts.Interfaces;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Crystal : MonoBehaviour, IDamageable
 {
-    
     
     // --------------------------------------
     // ---- Object variables ----------------
@@ -14,10 +12,7 @@ public class Crystal : MonoBehaviour, IDamageable
      private int dropCount = 5;
     [SerializeField] private float spread = 2f;
     [SerializeField] private GameObject drop;
-    
 
-
-    
     // --------------------------------------
     
     
@@ -25,6 +20,7 @@ public class Crystal : MonoBehaviour, IDamageable
     // ---- Reference variables -------------
     // --------------------------------------
     SpriteRenderer sr;
+
     // --------------------------------------
     
     
@@ -45,8 +41,6 @@ public class Crystal : MonoBehaviour, IDamageable
             {
                 while (dropCount > 0)
                 {
-
-                    
                     dropCount  -= 1;
                     Vector3 pos = transform.position;
                     pos.x += spread * Random.value - spread / 2;
@@ -56,8 +50,7 @@ public class Crystal : MonoBehaviour, IDamageable
                 }
                 Destroy(gameObject);
                 
-                CrystalManager.Instance.SubstractCrystal();
-
+                
             }
         }
         get

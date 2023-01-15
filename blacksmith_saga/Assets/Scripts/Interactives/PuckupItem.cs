@@ -10,9 +10,9 @@ public class PuckupItem : MonoBehaviour
     // --------------------------------------
     // ---- Object variables ----------------
     // -------------------------------------- 
-    [SerializeField] private float speed = 4f;
+    [SerializeField] private float speed = 2f;
     [SerializeField] private float pickupDistance = 2.5f;
-    [SerializeField] private float despawnTime = 10f;
+    [SerializeField] private float despawnTime = 1000f;
     // -------------------------------------- 
 
         
@@ -40,6 +40,11 @@ public class PuckupItem : MonoBehaviour
         }
 
         float distance = UnityEngine.Vector3.Distance(transform.position, player.position);
+        
+        Debug.Log(distance);
+        Debug.Log(distance > pickupDistance);
+
+        
         if (distance > pickupDistance)
         {
             return;

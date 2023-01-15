@@ -97,6 +97,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b09d71ebd7ccf748bdc16d70cc99297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  pickupDistance: 0.3
-  despawnTime: 10
+  speed: 2
+  pickupDistance: 1
+  despawnTime: 10000
