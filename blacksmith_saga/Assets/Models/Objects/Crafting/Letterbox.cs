@@ -85,7 +85,10 @@ public class Letterbox : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collider)
     {
-        _isNear = true;
+        if (collider.tag == "Player")
+        {
+            _isNear = true;
+        }
     }
 
     public void OnTriggerExit2D(Collider2D collider)
