@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3819094921020581655}
   - component: {fileID: -5114806749069201214}
   - component: {fileID: -2669081531137923909}
+  - component: {fileID: 3916155649099677840}
   - component: {fileID: 4316035391696751775}
   - component: {fileID: 3218052455106425813}
   - component: {fileID: 6680584481983559821}
@@ -125,8 +126,24 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0025461924, y: 0.023128795}
-  m_Size: {x: 0.555212, y: 0.555212}
+  m_Offset: {x: 0.0025455062, y: -0.06841391}
+  m_Size: {x: 0.45613205, y: 0.3721305}
+  m_Direction: 1
+--- !u!70 &3916155649099677840
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3819094921020581654}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.004308338, y: -0.0613852}
+  m_Size: {x: 0.521633, y: 0.45916772}
   m_Direction: 1
 --- !u!114 &4316035391696751775
 MonoBehaviour:
@@ -142,6 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aiPath: {fileID: 8895574202806276593}
   health: 3
+  damage: 1
 --- !u!95 &3218052455106425813
 Animator:
   serializedVersion: 4

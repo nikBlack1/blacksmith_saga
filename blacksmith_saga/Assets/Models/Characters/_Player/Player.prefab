@@ -87,10 +87,10 @@ GameObject:
   - component: {fileID: 9015534293705393919}
   - component: {fileID: 9015534293705393916}
   - component: {fileID: 8505453987883578970}
+  - component: {fileID: 3514796522255256670}
   - component: {fileID: 9015534293705393917}
   - component: {fileID: 9015534293705393906}
   - component: {fileID: 9015534293705393907}
-  - component: {fileID: 495820500523891160}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -227,6 +227,20 @@ MonoBehaviour:
   isFull: 0
   isOpen: 0
   inventoryTemplate: {fileID: 0}
+  inventoryObjectTemplate: {fileID: 0}
+--- !u!114 &3514796522255256670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9015534293705393904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21b50dbc48408f04082b53fd2bd23f8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 4
 --- !u!50 &9015534293705393917
 Rigidbody2D:
   serializedVersion: 4
@@ -284,18 +298,3 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &495820500523891160
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9015534293705393904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc1df0f9cdde39447bc5c459ee8c8004, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isFull: 0
-  isOpen: 0
-  inventoryTemplate: {fileID: 0}

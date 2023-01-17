@@ -47,6 +47,7 @@ public class Slime : MonoBehaviour, IDamageable
     }
 
     public float health = 3;
+    [SerializeField] private int damage;
 
     void Start()
     {
@@ -88,5 +89,13 @@ public class Slime : MonoBehaviour, IDamageable
     public void OnHit(float damage)
     {
         Health -= damage;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Player")
+        {
+            collision.GetComponent<Health>().TakeDamage(damage);
+        }
     }
 }
