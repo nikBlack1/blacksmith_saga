@@ -32,13 +32,7 @@ public class AttackArea : MonoBehaviour
             Vector2 direction = (Vector2)(collider.gameObject.transform.position - parentPosition).normalized;
             Vector2 knockback = direction * knockbackForce;
 
-            //collider.SendMessage("OnHit", damage, knockback);
-            // collider.SendMessage("OnHit", damage);
             damageableObject.OnHit(damage, knockback);
-        }
-        else
-        {
-            //Debug.LogWarning("Collider does not implement IDamageable");
         }
     }
 

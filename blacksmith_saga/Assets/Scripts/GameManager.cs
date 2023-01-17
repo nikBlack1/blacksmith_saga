@@ -5,14 +5,21 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
-    
     public static GameManager instance;
     public GameObject player;
+    public Vector2 respawnPosition;
+
     private void Awake()
     {
-        instance = this;
+        if(instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(instance);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        
     }
-    
-    
 }

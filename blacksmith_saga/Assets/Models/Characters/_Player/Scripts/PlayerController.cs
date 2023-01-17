@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         attackCollider = attackArea.GetComponent<Collider2D>();
+        
     }
 
     private void FixedUpdate()
