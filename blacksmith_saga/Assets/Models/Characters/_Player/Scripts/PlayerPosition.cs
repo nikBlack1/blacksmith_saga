@@ -17,7 +17,11 @@ public class PlayerPosition : MonoBehaviour
     {
         if (GameObject.FindGameObjectWithTag("Player").GetComponent<Health>().dead)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            FindObjectOfType<GameManager>().RespawnPlayer();
+        }
+        else
+        {
+            FindObjectOfType<GameManager>().playerRespawn = false;
         }
     }
 }

@@ -46,5 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crystalsCountPerSpawn: 3
   spread: 0.8
-  restCrystals: 0
+  restCrystals: 3
   crystal: {fileID: 7888306117402062548, guid: 647fe17708e94ff45ad8be0c00a92cfd, type: 3}

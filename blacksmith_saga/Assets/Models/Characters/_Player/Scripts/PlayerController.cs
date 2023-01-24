@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
 
     Vector2 movementInput = Vector2.zero;
 
-    bool canMove = true;
+    public bool canMove = true;
     bool isMoving = false;
 
     // Start is called before the first frame update
@@ -36,7 +36,6 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         attackCollider = attackArea.GetComponent<Collider2D>();
-        
     }
 
     private void FixedUpdate()
@@ -61,6 +60,15 @@ public class PlayerController : MonoBehaviour
         else
         {
             IsMoving = false;
+        }
+
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<Health>().dead /*|| animator.GetBool("hurt")*/)
+        {
+            canMove = false;
+        }
+        else
+        {
+            canMove = true;
         }
     }
 

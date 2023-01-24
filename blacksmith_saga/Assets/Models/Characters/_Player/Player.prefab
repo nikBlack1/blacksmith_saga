@@ -86,7 +86,6 @@ GameObject:
   - component: {fileID: 9015534293705393918}
   - component: {fileID: 9015534293705393919}
   - component: {fileID: 9015534293705393916}
-  - component: {fileID: 8505453987883578970}
   - component: {fileID: 3139926535521059501}
   - component: {fileID: 3514796522255256670}
   - component: {fileID: 9015534293705393917}
@@ -213,22 +212,6 @@ MonoBehaviour:
   maxSpeed: 8
   idleFriction: 0.9
   attackArea: {fileID: 9015534292953589280}
---- !u!114 &8505453987883578970
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9015534293705393904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc1df0f9cdde39447bc5c459ee8c8004, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isFull: 0
-  isOpen: 0
-  inventoryTemplate: {fileID: 0}
-  inventoryObjectTemplate: {fileID: 0}
 --- !u!114 &3139926535521059501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,6 +237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 4
+  dead: 0
 --- !u!50 &9015534293705393917
 Rigidbody2D:
   serializedVersion: 4

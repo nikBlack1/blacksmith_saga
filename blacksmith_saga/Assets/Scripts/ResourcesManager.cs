@@ -24,7 +24,16 @@ public class ResourcesManager : MonoBehaviour
     
     private void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(instance);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         blueShardsAmount = 0;
         blueChunksAmount = 0;
         moneyAmount = 0;
