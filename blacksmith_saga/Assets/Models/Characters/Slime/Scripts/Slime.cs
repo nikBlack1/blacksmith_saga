@@ -57,6 +57,7 @@ public class Slime : MonoBehaviour, IDamageable
         animator = GetComponent<Animator>();
         animator.SetBool("isAlive", isAlive);
         rigidbody = GetComponent<Rigidbody2D>();
+        this.GetComponent<AIDestinationSetter>().target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void FixedUpdate()
@@ -104,7 +105,7 @@ public class Slime : MonoBehaviour, IDamageable
         Health -= damage;
 
         this.aiPath.canMove = false;
-        rigidbody.AddForce(knockback);
+        rigidbody.AddForce(knockback*10);
     }
 
     public void OnHit(float damage)

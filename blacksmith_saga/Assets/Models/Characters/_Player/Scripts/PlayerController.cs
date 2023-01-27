@@ -105,6 +105,6 @@ public class PlayerController : MonoBehaviour
     {
         this.GetComponent<Health>().TakeDamage(damage);
 
-        rigidbody.AddForce(knockback);
+        rigidbody.AddForce(knockback*10);
     }
 }

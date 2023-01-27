@@ -105,7 +105,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 15
-  m_LinearDrag: 10
+  m_LinearDrag: 15
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -159,7 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aiPath: {fileID: 8895574202806276593}
   knockbackForce: 10000
-  health: 5
+  health: 3
   damage: 1
 --- !u!95 &3218052455106425813
 Animator:
@@ -264,4 +264,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  target: {fileID: 0}
+  target: {fileID: 9015534293705393913, guid: 3facff88497f28443bfb7f6f755b1a60, type: 3}
