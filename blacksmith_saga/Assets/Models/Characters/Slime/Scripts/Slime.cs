@@ -19,6 +19,7 @@ public class Slime : MonoBehaviour, IDamageable
 
     Animator animator;
 
+    public float knockbackForce = 0.1f;
     new Rigidbody2D rigidbody;
 
     bool isAlive = true;
@@ -38,6 +39,8 @@ public class Slime : MonoBehaviour, IDamageable
             if (health <= 0)
             {
                 animator.SetBool("isAlive", false);
+                damage = 0; 
+                knockbackForce = 0;
             }
         }
         get
@@ -47,7 +50,7 @@ public class Slime : MonoBehaviour, IDamageable
     }
 
     public float health = 3;
-    [SerializeField] private int damage;
+    [SerializeField] private int damage = 1;
 
     void Start()
     {
@@ -56,17 +59,34 @@ public class Slime : MonoBehaviour, IDamageable
         rigidbody = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Slime_Damage") || animator.GetCurrentAnimatorStateInfo(0).IsName("Slime_Death"))
+        {
+            this.aiPath.canMove = false;
+        }
+        else
+        {
+            this.aiPath.canMove = true;
+        }
+
         if (aiPath.desiredVelocity.x >= 0.01f)
         {
             transform.localScale = new Vector3(0.32f, 0.32f, 1f);
-            animator.SetBool("isMoving", true);
+
+            if(this.aiPath.canMove)
+            {
+                animator.SetBool("isMoving", true);
+            }
         }
         else if(aiPath.desiredVelocity.x <= -0.01f)
         {
             transform.localScale = new Vector3(-0.32f, 0.32f, 1f);
-            animator.SetBool("isMoving", true);
+
+            if (this.aiPath.canMove)
+            {
+                animator.SetBool("isMoving", true);
+            }
         }
         else
         {
@@ -83,6 +103,7 @@ public class Slime : MonoBehaviour, IDamageable
     {
         Health -= damage;
 
+        this.aiPath.canMove = false;
         rigidbody.AddForce(knockback);
     }
 
@@ -95,7 +116,12 @@ public class Slime : MonoBehaviour, IDamageable
     {
         if(collision.tag == "Player")
         {
-            collision.GetComponent<Health>().TakeDamage(damage);
+            Vector3 parentPosition = gameObject.GetComponentInParent<Transform>().position;
+
+            Vector2 direction = (Vector2)(collision.gameObject.transform.position - parentPosition).normalized;
+            Vector2 knockback = direction * knockbackForce;
+
+            collision.GetComponent<PlayerController>().OnHit(damage, knockback);
         }
     }
 }

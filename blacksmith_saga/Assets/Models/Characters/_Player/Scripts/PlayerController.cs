@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
@@ -19,7 +17,7 @@ public class PlayerController : MonoBehaviour
     public float idleFriction = 0.9f;
     public GameObject attackArea;
 
-    new Rigidbody2D rigidbody;
+    new public Rigidbody2D rigidbody;
     Animator animator;
     SpriteRenderer spriteRenderer;
     Collider2D attackCollider;
@@ -62,7 +60,7 @@ public class PlayerController : MonoBehaviour
             IsMoving = false;
         }
 
-        if (GameObject.FindGameObjectWithTag("Player").GetComponent<Health>().dead /*|| animator.GetBool("hurt")*/)
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<Health>().dead || animator.GetCurrentAnimatorStateInfo(0).IsName("Player_Hurt"))
         {
             canMove = false;
         }
@@ -101,5 +99,12 @@ public class PlayerController : MonoBehaviour
     public void UnlockMovement()
     {
         canMove = true;
+    }
+
+    public void OnHit(float damage, Vector2 knockback)
+    {
+        this.GetComponent<Health>().TakeDamage(damage);
+
+        rigidbody.AddForce(knockback);
     }
 }

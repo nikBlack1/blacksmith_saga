@@ -72,7 +72,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  knockbackForce: 5000
+  knockbackForce: 1000
   areaCollider: {fileID: 9015534292953589293}
 --- !u!1 &9015534293705393904
 GameObject:
@@ -208,10 +208,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfe9116abb1ad224ab7bf642c96d09ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 45
-  maxSpeed: 8
+  moveSpeed: 15
+  maxSpeed: 10
   idleFriction: 0.9
   attackArea: {fileID: 9015534292953589280}
+  rigidbody: {fileID: 9015534293705393917}
+  canMove: 1
 --- !u!114 &3139926535521059501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,7 +252,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 50
+  m_Mass: 25
   m_LinearDrag: 50
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -272,8 +274,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.015440615, y: -0.2519774}
-  m_Size: {x: 0.45412406, y: 0.12155121}
+  m_Offset: {x: -0.015440614, y: -0.24166934}
+  m_Size: {x: 0.4541242, y: 0.142167}
   m_Direction: 1
 --- !u!95 &9015534293705393907
 Animator:
