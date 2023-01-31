@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class SettingsMenu : MonoBehaviour
 {
-    public void AudioMixer mainMixer;
+    public AudioMixer mainMixer;
 
     public void SetVolume(float volume)
     {
