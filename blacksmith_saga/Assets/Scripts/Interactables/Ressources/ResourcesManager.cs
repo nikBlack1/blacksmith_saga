@@ -21,7 +21,10 @@ public class ResourcesManager : MonoBehaviour
     
     public int fameAmount;
     public Text fameAmountDisplay;
-    
+
+    public int dayAmount;
+    public Text dayAmountDisplay;
+
     private void Awake()
     {
         if (instance == null)
@@ -38,6 +41,7 @@ public class ResourcesManager : MonoBehaviour
         blueChunksAmount = 0;
         moneyAmount = 0;
         fameAmount = 0;
+        dayAmount = 1;
     }
 
 
@@ -47,5 +51,6 @@ public class ResourcesManager : MonoBehaviour
         blueChunksDisplay.text = blueChunksAmount.ToString();
         moneyAmountDisplay.text = moneyAmount.ToString();
         fameAmountDisplay.text = fameAmount.ToString();
+        dayAmountDisplay.text = dayAmount.ToString();
     }
 }

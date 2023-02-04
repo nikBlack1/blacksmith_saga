@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SavePoint : MonoBehaviour
+public class Save : MonoBehaviour
 {
     private bool _isNear = false;
     public GameObject activationButtonHint;
@@ -25,7 +25,13 @@ public class SavePoint : MonoBehaviour
 
             if (isKeyDown)
             {
+                PlayerPrefs.SetFloat("money", ResourcesManager.instance.moneyAmount);
+                PlayerPrefs.SetFloat("fame", ResourcesManager.instance.fameAmount);
                 
+                FindObjectOfType<GameManager>().RespawnPlayer(0f);
+
+                ResourcesManager.instance.dayAmount = ResourcesManager.instance.dayAmount + 1;
+                PlayerPrefs.SetInt("day", ResourcesManager.instance.dayAmount);
             }
         }
     }

@@ -40,8 +40,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void RespawnPlayer(float _restartDelay)
+    {
+        if (playerRespawn == false)
+        {
+            playerRespawn = true;
+            Invoke("Restart", _restartDelay);
+        }
+    }
+
     void Restart()
     {
-        SceneManager.LoadScene("HomeWorld");
+        SceneManager.LoadScene("Player");
+        SceneManager.LoadScene("Home", LoadSceneMode.Additive);
     }
 }
