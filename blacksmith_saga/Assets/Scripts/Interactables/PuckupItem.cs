@@ -53,7 +53,7 @@ public class PuckupItem : MonoBehaviour
         transform.position = UnityEngine.Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
         if (distance < 0.1f)
         {
-            ResourcesManager.instance.blueShardsAmount += 1;
+            ResourcesManager.instance.blueShardsAmount += 1; //für andere Ressourcen anpassen
             Destroy(gameObject);
         }
         

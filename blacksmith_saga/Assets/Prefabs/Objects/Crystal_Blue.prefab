@@ -98,7 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5a20bd1bd729ef4e8d9917415cd0867, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 5
+  dropCount: 1
   spread: 0.25
   drop: {fileID: 4533461745024241502, guid: 0b9fcaa02b71edc4ca37d12839989245, type: 3}
 --- !u!70 &2086072705386169510

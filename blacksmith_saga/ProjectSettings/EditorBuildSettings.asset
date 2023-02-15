@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/_Scenes/Home.unity
     guid: 5fe1c2b5ca1dcc14ba451bf9f8eb4f8c
   - enabled: 1
+    path: Assets/_Scenes/Snow.unity
+    guid: 0d1e8cc89fa39f843b94a280e48ed8ed
+  - enabled: 1
     path: Assets/_Scenes/Desert.unity
     guid: 0228f9fab24431d499d41eb9ae8cab46
   m_configObjects: {}
