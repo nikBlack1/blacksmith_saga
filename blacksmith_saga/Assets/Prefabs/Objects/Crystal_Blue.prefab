@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   dropCount: 1
-  spread: 0.25
+  spread: 0.5
   drop: {fileID: 4533461745024241502, guid: 0b9fcaa02b71edc4ca37d12839989245, type: 3}
 --- !u!70 &2086072705386169510
 CapsuleCollider2D:
