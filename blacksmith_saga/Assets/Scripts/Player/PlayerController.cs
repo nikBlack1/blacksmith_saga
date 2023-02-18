@@ -27,6 +27,9 @@ public class PlayerController : MonoBehaviour
     public bool canMove = true;
     bool isMoving = false;
 
+    //[SerializeField] private UI_Inventory uiInventory;
+    //private Inventory _inventory;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +37,9 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         attackCollider = attackArea.GetComponent<Collider2D>();
+
+        // _inventory = new Inventory();
+        // uiInventory.SetInventory(_inventory);
     }
 
     private void FixedUpdate()

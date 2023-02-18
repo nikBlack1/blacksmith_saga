@@ -13,6 +13,11 @@ public class PuckupItem : MonoBehaviour
     [SerializeField] private float speed = 2f;
     [SerializeField] private float pickupDistance = 2.5f;
     [SerializeField] private float despawnTime = 1000f;
+    public int itemId;
+
+    private Inventory _inventory;
+
+    public GameObject _itemIcon;
     // -------------------------------------- 
 
         
@@ -23,7 +28,10 @@ public class PuckupItem : MonoBehaviour
     private Transform player;
     // -------------------------------------- 
 
-
+    private void Start()
+    {
+        _inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+    }
 
 
     private void Awake()
@@ -53,8 +61,29 @@ public class PuckupItem : MonoBehaviour
         transform.position = UnityEngine.Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
         if (distance < 0.1f)
         {
-            ResourcesManager.instance.blueShardsAmount += 1; //für andere Ressourcen anpassen
+            //ResourcesManager.instance.blueShardsAmount += 1; //fï¿½r andere Ressourcen anpassen
+            Item newItem = new Item();
+            switch (itemId)
+            {
+                case 1:
+                    newItem.itemType = Item.ItemType.BlueShard;
+                    break;
+                case 2:
+                    newItem.itemType = Item.ItemType.RedShard;
+                    break;
+                case 3:
+                    newItem.itemType = Item.ItemType.GoldShard;
+                    break;
+                case 4:
+                    newItem.itemType = Item.ItemType.IronShard;
+                    break; 
+            }
+            // _inventory.AddItem(newItem);
+            //_inventory.instance.AddItem(new Item { itemType = Item.ItemType.BlueShard, amount = 1}); 
+
+            Inventory.instance.AddItem(new Item { itemType = newItem.itemType, amount = 1 });
             Destroy(gameObject);
+
         }
         
     }

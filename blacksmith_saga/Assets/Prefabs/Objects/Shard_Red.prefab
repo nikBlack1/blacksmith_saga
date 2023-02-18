@@ -100,3 +100,5 @@ MonoBehaviour:
   speed: 2
   pickupDistance: 1
   despawnTime: 10000
+  itemId: 2
+  _itemIcon: {fileID: 6350665019009702775, guid: be1d2ec482a37c446afe87f2834ae127, type: 3}
