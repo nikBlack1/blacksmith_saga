@@ -5,7 +5,7 @@ using UnityEngine;
 public class PauseMenu : MonoBehaviour {
 
     public static bool GameIsPaused = false;
-
+    public GameObject pauseMenuUI;
 
     void Update() {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -15,7 +15,7 @@ public class PauseMenu : MonoBehaviour {
                 Resume();
             } else
             {
-                Pause():
+                Pause();
             }
         }
     }
