@@ -35,7 +35,7 @@ public class Inventory : MonoBehaviour
         // AddItem(new Item { itemType = Item.ItemType.BlueShard, amount = 1});
         // AddItem(new Item { itemType = Item.ItemType.GoldShard, amount = 1});
         //AddItem(new Item { itemType = Item.ItemType.IronShard, amount = 1});
-        Debug.Log(itemList.Count);
+        //Debug.Log(itemList.Count);
     }
 
     public void AddItem(Item item)

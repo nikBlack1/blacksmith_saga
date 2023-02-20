@@ -27,6 +27,7 @@ public class Save : MonoBehaviour
             {
                 PlayerPrefs.SetFloat("money", ResourcesManager.instance.moneyAmount);
                 PlayerPrefs.SetFloat("fame", ResourcesManager.instance.fameAmount);
+
                 
                 FindObjectOfType<GameManager>().RespawnPlayer(0f);
 

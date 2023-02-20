@@ -54,7 +54,7 @@ public class Letterbox : MonoBehaviour
 
         bool isKeyAccept = Input.GetKeyDown(KeyCode.E);
         bool isKeyRefuse = Input.GetKeyDown(KeyCode.N);
-        Debug.Log("lol");
+        
         if (_isNear)
         {
             //letterboxUi.gameObject.SetActive(true);

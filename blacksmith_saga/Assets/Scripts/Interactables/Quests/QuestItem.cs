@@ -41,7 +41,7 @@ public class QuestItem
     public QuestItem()
     {
         this.itemType = GenerateRandomItemType();
-        Debug.Log(itemType); 
+        //Debug.Log(itemType); 
         this.itemMaterial = GenerateRandomItemMaterial();
         this._title = GenerateItemName();
     }
