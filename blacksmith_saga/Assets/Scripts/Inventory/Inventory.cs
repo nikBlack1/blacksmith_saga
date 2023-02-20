@@ -9,7 +9,7 @@ public class Inventory : MonoBehaviour
 {
     // Start is called before the first frame update
     public List<Item> itemList;
-    public event EventHandler OnItemListChanged;
+    //public event EventHandler OnItemListChanged;
 
     public static Inventory instance;
 

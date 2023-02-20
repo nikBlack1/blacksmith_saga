@@ -74,6 +74,13 @@ public class PlayerController : MonoBehaviour
         {
             canMove = true;
         }
+
+
+        //Übergangsweise zum Spiel schließen
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     void OnMove(InputValue movementValue)

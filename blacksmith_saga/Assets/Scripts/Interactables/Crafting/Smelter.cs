@@ -21,7 +21,7 @@ public class Smelter : MonoBehaviour
     private void Update()
     {
         uiSpriteRenderer.color = new Color(255, 255, 255, 0);
-        bool isAcceptKeyDown = Input.GetKeyDown(KeyCode.G);
+        bool isAcceptKeyDown = Input.GetKeyDown(KeyCode.E);
         bool isRefuseKeyDown = Input.GetKeyDown(KeyCode.R);
         bool isSmeltKeyDown = Input.GetKeyDown(KeyCode.E);
 
@@ -61,7 +61,7 @@ public class Smelter : MonoBehaviour
                 {
                     Debug.Log("quest is going on");
                     // check if item is needed
-                    if (itemIsNeeded(selectedItem))
+                    if (itemIsNeeded(selectedItem) && Inventory.instance.itemList[UI_Inventory.instance.selectedItemIndex].amount >= 1)
                     {
                         // substract from inventory
                         Inventory.instance.itemList[UI_Inventory.instance.selectedItemIndex].amount -= 1;

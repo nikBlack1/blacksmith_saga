@@ -85,6 +85,7 @@ public class QuestManager : MonoBehaviour
                 ResourcesManager.instance.fameAmount += suggestedQuest._rewardFame;
 
                 questOngoing = false;
+                QuestManager.Instance.playSuccessSound();
                 this.suggestedQuest = null;
                 generateQuest();
                 return true;
@@ -96,6 +97,9 @@ public class QuestManager : MonoBehaviour
     public bool refuseQuest()
     {
         questOngoing = false;
+
+        //todo: eventuell abgebene Items wieder zurück geben
+
         this.suggestedQuest = null;
         generateQuest();
         return true;

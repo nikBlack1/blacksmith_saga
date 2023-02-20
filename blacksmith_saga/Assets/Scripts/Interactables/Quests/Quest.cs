@@ -24,13 +24,36 @@ public class Quest
 
     public int generateFameBasedOnItem()
     {
-        // return -1 * (questItem._nIron * 1) + (questItem._nBlue * 2) + (questItem._nRed * 3) + (questItem._nGold * 4);
-        return 5;
+        int ironValue = 0;
+        int blueValue = 0;
+        int redValue = 0;
+        int goldValue = 0;
+
+        if (questItem._nIron > 0)
+        {
+            ironValue = questItem._nIron;
+        }
+        if (questItem._nBlue > 0)
+        {
+            blueValue = questItem._nBlue;
+        }
+        if (questItem._nRed > 0)
+        {
+            redValue = questItem._nRed;
+        }
+        if (questItem._nGold > 0)
+        {
+            goldValue = questItem._nGold;
+        }
+
+        return (ironValue * 1) + (blueValue * 2) + (redValue * 3) + (goldValue * 2);
+
+        //return 5;
     }
 
     public int generateGoldBasedOnItem()
     {
-        // return (questItem._nIron * 1) + (questItem._nBlue * 2) + (questItem._nRed * 2) + (questItem._nGold * 3);
-        return 5;
+        return (generateFameBasedOnItem() * generateFameBasedOnItem())/2;
+        //return 5;
     }
 }

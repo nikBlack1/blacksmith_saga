@@ -45,15 +45,16 @@ public class Letterbox : MonoBehaviour
         dynamicElementsRectTransform = Instantiate(dynamicElements, letterboxUi).GetComponent<RectTransform>();
         letterboxUi.gameObject.SetActive(false);
 
-        RefreshQuestUi(); 
+         
 
     }
 
     private void FixedUpdate()
     {
+        RefreshQuestUi();
 
         bool isKeyAccept = Input.GetKeyDown(KeyCode.E);
-        bool isKeyRefuse = Input.GetKeyDown(KeyCode.N);
+        //bool isKeyRefuse = Input.GetKeyDown(KeyCode.N);
         
         if (_isNear)
         {
