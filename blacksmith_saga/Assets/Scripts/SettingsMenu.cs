@@ -9,8 +9,4 @@ public class SettingsMenu : MonoBehaviour
     {
         mainMixer.SetFloat("volume", volume);
     }
-    public void SetFullscreen(bool isFullscreen)
-    {
-        Screen.fullScreen = isFullscreen;
-    }
 }
