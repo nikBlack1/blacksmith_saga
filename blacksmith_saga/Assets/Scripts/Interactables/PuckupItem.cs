@@ -82,6 +82,7 @@ public class PuckupItem : MonoBehaviour
             //_inventory.instance.AddItem(new Item { itemType = Item.ItemType.BlueShard, amount = 1}); 
 
             Inventory.instance.AddItem(new Item { itemType = newItem.itemType, amount = 1 });
+            Letterbox.instance.RefreshQuestUi();
             Destroy(gameObject);
 
         }

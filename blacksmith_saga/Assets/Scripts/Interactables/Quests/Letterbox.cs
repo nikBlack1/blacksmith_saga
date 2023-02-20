@@ -1,85 +1,72 @@
 using UnityEngine;
 using Random = System.Random;
 using Math = System.Math;
+using UnityEngine.UI;
+using TMPro;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 
 
 
 public class Letterbox : MonoBehaviour
 {
 
-    private bool _isNear = false;
-    public GameObject acceptRefuseHint;
-    public GameObject questImage;
-    public GameObject completeQuest;
+    public static Letterbox instance;
     
-    private SpriteRenderer _questImageSpriteRenderer;
-    private SpriteRenderer _acceptRefuseHintSpriteRenderer;
-    private SpriteRenderer _completeQuestHintSpriteRenderer;
-    private Random _random = new Random();
+    private bool _isNear = false;
+    private Transform letterboxUi;
+    private Transform dynamicElements;
+    private Transform itemTitle;
 
+    private RectTransform dynamicElementsRectTransform;
+    
+    //public GameObject itemImage;
 
-    private bool _questOngoing = false;
-    // private SmithingTask _ongoingTask;
+    
+
     private void Awake()
     
     {
-        _acceptRefuseHintSpriteRenderer = acceptRefuseHint.GetComponent<SpriteRenderer>();
-        _questImageSpriteRenderer = questImage.GetComponent<SpriteRenderer>();
-        _completeQuestHintSpriteRenderer = completeQuest.GetComponent<SpriteRenderer>();
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(instance);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        letterboxUi = transform.Find("LetterboxUi"); 
+        dynamicElements = letterboxUi.Find("DynamicElements");
+        //itemImage = dynamicElements.Find("ItemImage");
+        itemTitle = dynamicElements.Find("ItemTitle");
+        
+        dynamicElementsRectTransform = Instantiate(dynamicElements, letterboxUi).GetComponent<RectTransform>();
+        letterboxUi.gameObject.SetActive(false);
+
+        RefreshQuestUi(); 
+
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        _acceptRefuseHintSpriteRenderer.color = new Color(255, 255, 255, 0);
-        _questImageSpriteRenderer.color = new Color(255, 255, 255, 0);
-        _completeQuestHintSpriteRenderer.color = new Color(255, 255, 255, 0);
-        
+
         bool isKeyAccept = Input.GetKeyDown(KeyCode.E);
         bool isKeyRefuse = Input.GetKeyDown(KeyCode.N);
-        
+        Debug.Log("lol");
         if (_isNear)
         {
-            if (!_questOngoing)
-            {
-                int number  = _random.Next(1, 5);
-
-                int randomReward = number * number;
-                int fame = number;
-                int chunksNeeded = 1;
-                QuestManager.Instance.CreateSmithingTask(randomReward, fame, chunksNeeded);
-                
-                _acceptRefuseHintSpriteRenderer.color = new Color(255, 255, 255, 255);
-                _questImageSpriteRenderer.color = new Color(255, 255, 255, 255);
+            //letterboxUi.gameObject.SetActive(true);
             
-                if (isKeyAccept)
-                {
-                    _questOngoing = true;
-                }
-            }
-            if (_questOngoing)
+            // if no active quest
+            if (!QuestManager.Instance.questOngoing)
             {
-                
-                print("quest is ongoing!!!");
-                SmithingTask ongoingTask = QuestManager.Instance.GetOngoingSmithingTask();
-                
-                _completeQuestHintSpriteRenderer.color = new Color(255, 255, 255, 255);
-
-                
                 if (isKeyAccept)
                 {
-                    print("accept!");
-                    if (ongoingTask.ChunksNeeded <= ResourcesManager.instance.blueChunksAmount)
-                    {
-                        ResourcesManager.instance.blueChunksAmount -= 1;
-                        ResourcesManager.instance.moneyAmount += ongoingTask.Reward;
-                        ResourcesManager.instance.fameAmount += ongoingTask.Fame;
-                        QuestManager.Instance.CompleteOngoingSmithingTask();
-                        _questOngoing = false;
-                    }
+                    QuestManager.Instance.questOngoing = true;
                 }
-
             }
-
         }
     }
 
@@ -87,15 +74,92 @@ public class Letterbox : MonoBehaviour
     {
         if (collider.tag == "Player")
         {
+
+            letterboxUi.gameObject.SetActive(true);
             _isNear = true;
+            QuestManager.Instance.playOpenSound();
+
         }
     }
 
     public void OnTriggerExit2D(Collider2D collider)
-    {
+    {   
+        letterboxUi.gameObject.SetActive(false);
         _isNear = false;
-        _acceptRefuseHintSpriteRenderer.color = new Color(255, 255, 255, 0);
-        _questImageSpriteRenderer.color = new Color(255, 255, 255, 0);
-        _completeQuestHintSpriteRenderer.color = new Color(255, 255, 255, 0);
+        QuestManager.Instance.playCloseSound();
+    }
+
+    public void OnTriggerStay2D(Collider2D collider)
+    {
+        //
+    }
+
+    public void RefreshQuestUi()
+    {
+        //itemSlotRectTransform.anchoredPosition = new Vector2(x * itemSlotCellSize, y * itemSlotCellSize);
+        Image image = dynamicElementsRectTransform.Find("ItemImage").GetComponent<Image>();
+        image.sprite = QuestManager.Instance.suggestedQuest.questItem.GetSprite();
+        
+        TextMeshProUGUI uiTitle = dynamicElementsRectTransform.Find("Title").GetComponent<TextMeshProUGUI>();
+        uiTitle.SetText(QuestManager.Instance.suggestedQuest.questItem._title.ToString());
+        
+        TextMeshProUGUI nIron = dynamicElementsRectTransform.Find("nIron").GetComponent<TextMeshProUGUI>();
+        if (isRequired(QuestManager.Instance.suggestedQuest.questItem._nIron))
+        {
+            nIron.SetText(QuestManager.Instance.suggestedQuest.questItem._nIron.ToString());
+        }
+        else
+        {
+            nIron.SetText("Not required");
+        }
+        
+        TextMeshProUGUI nGold = dynamicElementsRectTransform.Find("nGold").GetComponent<TextMeshProUGUI>();
+        if (isRequired(QuestManager.Instance.suggestedQuest.questItem._nGold))
+        {
+            nGold.SetText(QuestManager.Instance.suggestedQuest.questItem._nGold.ToString());
+        }
+        else
+        {
+            nGold.SetText("Not required");
+        }
+        
+        TextMeshProUGUI nBlue = dynamicElementsRectTransform.Find("nBlue").GetComponent<TextMeshProUGUI>();
+        if (isRequired(QuestManager.Instance.suggestedQuest.questItem._nBlue))
+        {
+            nBlue.SetText(QuestManager.Instance.suggestedQuest.questItem._nBlue.ToString());
+        }
+        else
+        {
+            nBlue.SetText("Not required");
+        }
+        
+        TextMeshProUGUI nRed = dynamicElementsRectTransform.Find("nRed").GetComponent<TextMeshProUGUI>();
+        if (isRequired(QuestManager.Instance.suggestedQuest.questItem._nRed))
+        {
+            nRed.SetText(QuestManager.Instance.suggestedQuest.questItem._nRed.ToString());
+        }
+        else
+        {
+            nRed.SetText("Not required");
+        }
+        
+        
+        TextMeshProUGUI rFame = dynamicElementsRectTransform.Find("rFame").GetComponent<TextMeshProUGUI>();
+        rFame.SetText(QuestManager.Instance.suggestedQuest._rewardFame.ToString());
+        
+        TextMeshProUGUI rGold = dynamicElementsRectTransform.Find("rGold").GetComponent<TextMeshProUGUI>();
+        rGold.SetText(QuestManager.Instance.suggestedQuest._rewardGold.ToString());
+    }
+
+    public bool isRequired(int number)
+    {
+        if (number == -1)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 }

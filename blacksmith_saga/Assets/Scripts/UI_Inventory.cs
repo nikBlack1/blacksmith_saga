@@ -11,7 +11,7 @@ public class UI_Inventory : MonoBehaviour
     //private Inventory inventory;
     private Transform itemSlotContainer;
     private Transform itemSlotTemplate;
-    private int selectedItemIndex = 0;
+    public int selectedItemIndex = 0;
     
     public static UI_Inventory instance;
 
