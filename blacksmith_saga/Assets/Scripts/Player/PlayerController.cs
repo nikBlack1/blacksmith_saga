@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
         //Übergangsweise zum Spiel schließen
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            Application.Quit();
+            GameObject.FindGameObjectWithTag("Menu").GetComponent<PauseMenu>().Pause();
         }
     }
 

@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public Vector2 respawnPosition;
 
     public bool playerRespawn = false;
+    public bool isLoaded = false;
     public float restartDelay = 1f;
 
     private void Awake()
@@ -29,6 +30,12 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+
+        if (isLoaded == true)
+        {
+            Debug.Log("loaded");
+            try { LoadData(); } catch(Exception) { }
+        }
     }
 
     public void RespawnPlayer()
@@ -53,5 +60,38 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("Player");
         SceneManager.LoadScene("Home", LoadSceneMode.Additive);
+    }
+
+    public void LoadData()
+    {
+        ResourcesManager.instance.moneyAmount = PlayerPrefs.GetInt("money");
+        ResourcesManager.instance.fameAmount = PlayerPrefs.GetInt("fame");
+
+        player.GetComponent<Health>().startingHealth = PlayerPrefs.GetFloat("health");
+        player.GetComponentInChildren<AttackArea>().damage = PlayerPrefs.GetFloat("damage");
+
+        if (PlayerPrefs.GetString("itemName0") != "")
+        {
+            Inventory.instance.AddItemFromString(PlayerPrefs.GetString("itemName0"), PlayerPrefs.GetInt("itemAmount0"));
+
+            if (PlayerPrefs.GetString("itemName1") != "")
+            {
+                Inventory.instance.AddItemFromString(PlayerPrefs.GetString("itemName1"), PlayerPrefs.GetInt("itemAmount1"));
+
+                if (PlayerPrefs.GetString("itemName2") != "")
+                {
+                    Inventory.instance.AddItemFromString(PlayerPrefs.GetString("itemName2"), PlayerPrefs.GetInt("itemAmount2"));
+
+                    if (PlayerPrefs.GetString("itemName3") != "")
+                    {
+                        Inventory.instance.AddItemFromString(PlayerPrefs.GetString("itemName3"), PlayerPrefs.GetInt("itemAmount3"));
+                    }
+                }
+            }
+        }
+
+        ResourcesManager.instance.dayAmount = PlayerPrefs.GetInt("day");
+
+        isLoaded = false;
     }
 }

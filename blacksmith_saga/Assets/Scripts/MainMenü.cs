@@ -13,7 +13,10 @@ public class MainMenü : MonoBehaviour {
 
     public void LoadGame()
     {
-        PlayGame();
+        FindObjectOfType<GameManager>().isLoaded = true;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("Home", LoadSceneMode.Additive);
+        
     }
 
     public void QuitGame () 

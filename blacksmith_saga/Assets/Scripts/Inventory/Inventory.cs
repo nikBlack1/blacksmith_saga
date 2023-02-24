@@ -72,7 +72,6 @@ public class Inventory : MonoBehaviour
         
         switch (itemTypeName)
         {
-            default:
             case "BlueShard":
                 newItem.itemType = Item.ItemType.BlueShard;
                 break;
@@ -88,10 +87,13 @@ public class Inventory : MonoBehaviour
             case "IronShard":
                 newItem.itemType = Item.ItemType.IronShard;
                 break;
+            default:
+                break;
         }
 
         newItem.amount = amount;
         
-        AddItem(newItem);
+        itemList.Add(newItem);
+        UI_Inventory.instance.RefreshInventoryItems();
     }
 }
