@@ -28,4 +28,20 @@ public class Item
                 case ItemType.IronShard: return ItemAssets.Instance.shardIron;
         }
     }
+
+    public string getItemTypeAsString()
+    {
+        switch (itemType)
+        {
+            default:
+            case ItemType.BlueShard:
+                return "BlueShard";
+            case ItemType.RedShard:
+                return "RedShard";
+            case ItemType.GoldShard:
+                return "GoldShard";
+            case ItemType.IronShard:
+                return "IronShard";
+        }
+    }
 }

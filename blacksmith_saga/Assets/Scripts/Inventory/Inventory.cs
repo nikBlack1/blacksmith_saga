@@ -64,4 +64,34 @@ public class Inventory : MonoBehaviour
     {
         return itemList;
     }
+
+    public void AddItemFromString(string itemTypeName, int amount)
+    {
+        Item newItem = new Item();
+        
+        
+        switch (itemTypeName)
+        {
+            default:
+            case "BlueShard":
+                newItem.itemType = Item.ItemType.BlueShard;
+                break;
+
+            case "RedShard":
+                newItem.itemType = Item.ItemType.RedShard;
+                break;
+
+            case "GoldShard":
+                newItem.itemType = Item.ItemType.GoldShard;
+                break;
+
+            case "IronShard":
+                newItem.itemType = Item.ItemType.IronShard;
+                break;
+        }
+
+        newItem.amount = amount;
+        
+        AddItem(newItem);
+    }
 }
