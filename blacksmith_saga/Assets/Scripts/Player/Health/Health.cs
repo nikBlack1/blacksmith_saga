@@ -1,8 +1,9 @@
+using System;
 using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private float startingHealth;
+    public float startingHealth;
     public float currentHealth { get; private set; }
     private Animator anim;
     public bool dead;
@@ -12,6 +13,7 @@ public class Health : MonoBehaviour
         currentHealth = startingHealth;
         anim = GetComponent<Animator>();
     }
+
 
     public void TakeDamage(float _damage)
     {
@@ -29,5 +31,10 @@ public class Health : MonoBehaviour
                 dead = true;
             }
         }
+    }
+
+    public void buyNewHealth()
+    {
+        currentHealth += 1;
     }
 }
