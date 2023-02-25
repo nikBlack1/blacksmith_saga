@@ -71,7 +71,7 @@ public class QuestItem
                 _nBlue = 0;
                 // this._nGold += 10;
                 // this._nBlue += 5;                
-                this._nGold += 1;
+                this._nGold += 2;
                 this._nBlue += 1;
                 return ItemType.ringBlue;
             
@@ -81,25 +81,25 @@ public class QuestItem
                 // this._nRed += 5;
                 // this._nGold += 10;                
                 this._nRed += 1;
-                this._nGold += 1;
+                this._nGold += 2;
                 return ItemType.ringRed;
             
             case 2:
                 _nIron = 0;
                 // this._nIron += 5;
-                this._nIron += 1;
+                this._nIron += 2;
                 return ItemType.sword;
             
             case 3:
                 _nIron = 0;
                 //this._nIron += 20;
-                this._nIron += 1;
+                this._nIron += 3;
                 return ItemType.armor;
             
             case 4:
                 _nIron = 0;
                 //this._nIron += 10;
-                this._nIron += 1;
+                this._nIron += 2;
                 return ItemType.shield;
         }
     }
@@ -135,7 +135,7 @@ public class QuestItem
                     _nIron = 0;
                 }
                 //this._nIron += 5;
-                this._nIron += 1;
+                this._nIron += 2;
                 return ItemMaterial.iron;   
             
             case 3:
@@ -144,7 +144,7 @@ public class QuestItem
                     _nGold = 0;
                 }
                 // this._nGold += 5;
-                this._nGold += 1;
+                this._nGold += 2;
                 return ItemMaterial.gold;
         }
     }

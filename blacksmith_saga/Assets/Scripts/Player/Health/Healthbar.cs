@@ -3,9 +3,9 @@ using UnityEngine.UI;
 
 public class Healthbar : MonoBehaviour
 {
-    [SerializeField] private Health playerHealth;
-    [SerializeField] private Image totalhealthBar;
-    [SerializeField] private Image currenthealthBar;
+    [SerializeField] public Health playerHealth;
+    [SerializeField] public Image totalhealthBar;
+    [SerializeField] public Image currenthealthBar;
 
     private void Start()
     {

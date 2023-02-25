@@ -5,72 +5,77 @@ using UnityEngine;
 
 public class ShopManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    private bool _isNearDamage;
-    private bool _isNearHealth;
-    private Transform shopUi;
-    private Transform playerAttackArea;
-    private Transform player;
-
+    private bool _isNear = false;
+    public GameObject activationButtonHint;
+    public SpriteRenderer uiSpriteRenderer;
+    private GameObject player;
+    [SerializeField] string mode;
 
     private void Awake()
     {
-        playerAttackArea = transform.Find("AttackArea");
-        player = transform.Find("Player");
-
-        shopUi = transform.Find("ShopUI");
-        shopUi.gameObject.SetActive(false);
-        
-        bool isActionKeyAccept = Input.GetKeyDown(KeyCode.E);
-
-        // if (_isNear)
-        // {
-        //     if (isDamageKeyAccept)
-        //     {
-        //         buyDamage();
-        //     }
-        //
-        //     if (isHealthKeyAccept)
-        //     {
-        //         buyHealth();
-        //     }
-        // }
-
+        uiSpriteRenderer = activationButtonHint.GetComponent<SpriteRenderer>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        return;
     }
 
     private void Update()
     {
-        throw new NotImplementedException();
+        uiSpriteRenderer.color = new Color(255, 255, 255, 0);
+        bool isKeyDown = Input.GetKeyDown(KeyCode.E);
+
+        if (_isNear)
+        {
+            uiSpriteRenderer.color = new Color(255, 255, 255, 255);
+
+            if (isKeyDown)
+            {
+                if (mode == "Health")
+                {
+                    BuyHealth();
+                }
+                if (mode == "Damage")
+                {
+                    BuyDamage();
+                }
+            }
+        }
     }
-    
+
     public void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.tag == "Player")
+        if (collider.CompareTag("Player"))
         {
-            // _isNear = true;
+            _isNear = true;
         }
+
     }
 
     public void OnTriggerExit2D(Collider2D collider)
     {
-        // _isNear = false;
+        _isNear = false;
     }
 
-    public void buyHealth()
+    public void BuyHealth()
     {
-        if (ResourcesManager.instance.moneyAmount >= 100)
+        if (ResourcesManager.instance.moneyAmount >= 10)
         {
-            ResourcesManager.instance.moneyAmount -= 100;
-            player.GetComponent<Health>().buyNewHealth();
+            if(player.GetComponent<Health>().startingHealth < 6)
+            {
+                ResourcesManager.instance.moneyAmount -= 10;
+                player.GetComponent<Health>().buyNewHealth();
+            }
         }
     }
     
-    public void buyDamage()
+    public void BuyDamage()
     {
-        if (ResourcesManager.instance.moneyAmount >= 15)
+        if (ResourcesManager.instance.moneyAmount >= 10)
         {
-            ResourcesManager.instance.moneyAmount -= 10;
-            playerAttackArea.GetComponent<AttackArea>().damage += 5;
+            if(player.GetComponentInChildren<AttackArea>().damage < 2)
+            {
+                ResourcesManager.instance.moneyAmount -= 10;
+                player.GetComponentInChildren<AttackArea>().damage += 0.25f;
+            }
         }
     }
     

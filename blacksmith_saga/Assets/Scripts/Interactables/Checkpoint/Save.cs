@@ -51,9 +51,6 @@ public class Save : MonoBehaviour
         PlayerPrefs.SetInt("money", ResourcesManager.instance.moneyAmount);
         PlayerPrefs.SetInt("fame", ResourcesManager.instance.fameAmount);
 
-        PlayerPrefs.SetFloat("health", player.GetComponent<Health>().startingHealth);
-        PlayerPrefs.SetFloat("damage", player.GetComponentInChildren<AttackArea>().damage);
-
         PlayerPrefs.SetString("itemName0", "");
         PlayerPrefs.SetString("itemName1", "");
         PlayerPrefs.SetString("itemName2", "");

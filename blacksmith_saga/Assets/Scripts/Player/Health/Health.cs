@@ -4,7 +4,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public float startingHealth;
-    public float currentHealth { get; private set; }
+    public float currentHealth { get; set; }
     private Animator anim;
     public bool dead;
 
@@ -35,6 +35,8 @@ public class Health : MonoBehaviour
 
     public void buyNewHealth()
     {
+        startingHealth += 1;
         currentHealth += 1;
+        FindObjectOfType<Healthbar>().totalhealthBar.fillAmount += 0.1f;
     }
 }

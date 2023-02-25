@@ -44,6 +44,13 @@ public class GameManager : MonoBehaviour
         {
             playerRespawn = true;
             Invoke("Restart", restartDelay);
+            foreach (Item item in Inventory.instance.itemList)
+            {
+                item.amount = Mathf.RoundToInt(item.amount / 3);
+            }
+            ResourcesManager.instance.moneyAmount = Mathf.RoundToInt(ResourcesManager.instance.moneyAmount / 3);
+            ResourcesManager.instance.fameAmount = Mathf.RoundToInt(ResourcesManager.instance.fameAmount / 3);
+            UI_Inventory.instance.RefreshInventoryItems();
         }
     }
 
@@ -66,9 +73,6 @@ public class GameManager : MonoBehaviour
     {
         ResourcesManager.instance.moneyAmount = PlayerPrefs.GetInt("money");
         ResourcesManager.instance.fameAmount = PlayerPrefs.GetInt("fame");
-
-        player.GetComponent<Health>().startingHealth = PlayerPrefs.GetFloat("health");
-        player.GetComponentInChildren<AttackArea>().damage = PlayerPrefs.GetFloat("damage");
 
         if (PlayerPrefs.GetString("itemName0") != "")
         {

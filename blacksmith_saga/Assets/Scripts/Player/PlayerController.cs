@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -76,10 +77,10 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        //Übergangsweise zum Spiel schließen
+        //Übergangsweise zum schließen des Spiels
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            GameObject.FindGameObjectWithTag("Menu").GetComponent<PauseMenu>().Pause();
+            Application.Quit();
         }
     }
 
